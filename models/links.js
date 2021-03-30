@@ -6,7 +6,7 @@ const linkSchema = new mongoose.Schema({
     required: true,
   },
   links: {
-    type: String,
+    type: [String],
   },
 });
 

@@ -16,15 +16,27 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
+app.post("/user", async (req, res) => {
+  const user = req.body.find;
+  console.log(user);
+  const userindb = await links.findOne({ name: user });
+  if (userindb) {
+    const userId = userindb._id;
+    res.redirect(`/${userId}`);
+  } else {
+    res.redirect("/");
+  }
+});
+
 app.post("/", async (req, res) => {
+  const linkarr = [req.body.link1, req.body.link2, req.body.link3];
   const link = new links({
     name: req.body.name,
-    links: req.body.links,
+    links: linkarr,
   });
 
   try {
     const result = await link.save();
-    console.log(result.id);
     res.redirect(`/${result.id}`);
   } catch (e) {
     console.log(e);
@@ -38,7 +50,6 @@ app.get("/newUser", (req, res) => {
 
 app.get("/:id", async (req, res) => {
   const user = await links.findById(req.params.id);
-  console.log({ user });
   if (user == null) res.redirect("/");
   res.render("user", { user: user });
 });

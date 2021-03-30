@@ -16,20 +16,38 @@
   <body>
     <h1 class="mb-4">New User</h1>
     <form action="/" method="POST">
-      <div class="form-group">
+      <div class="form-group form-control">
         <label for="name" class="form-label">User name</label>
         <input
           type="text"
           name="name"
           id="name"
           required
-          class="form-control"
-        ><%= link.links%></input>
-        <label for="links" class="form-label">Links</label>
-        <textarea name="links" id="links" class="form-control">
-<%= link.links %></textarea
-        >
+          class=""
+        ><%= link.name%></input>
       </div>
+        <div class="form-row align-items-center">
+          <label for="link1" class="form-label mx-4">Links</label>
+          <input
+            type="text"
+            id="link1"
+            name="link"
+            class="mb-2"
+          ></input>
+          <input
+            type="text"
+            id="link2"
+            name="link"
+            class="mb-2"
+          ></input>
+          <input
+            type="text"
+            id="link3"
+            name="link"
+            class="mb-2"
+          ></input>
+         </div>
+      
       <button type="submit">Submit</button>
     </form>
     <a href="/">Home</a>
